@@ -5,6 +5,22 @@
 #include <cstring>
 #include <cassert>
 
+namespace {
+void BuildOperation(const Token& token,
+                    std::vector<std::unique_ptr<ExpressionNode>>& stack) {
+  std::unique_ptr right_arg(std::move(stack.back()));
+    stack.pop_back();
+    std::unique_ptr left_arg(std::move(stack.back()));
+    stack.pop_back();
+    stack.emplace_back(
+      std::make_unique<ExpressionNode>(
+        NodesIdentifierSingleton::Instance().at(token.identifier),
+        0,
+        std::move(left_arg),
+        std::move(right_arg)));
+}
+}
+
 ExpressionTree::ExpressionTree(const std::string_view& expression) {
   Tokenizer tokenizer;
   std::vector<Token> expression_tokens = tokenizer.GetTokens(expression);
@@ -29,6 +45,10 @@ void ExpressionTree::BuildTreeFromReversePolishNotation
   std::vector<std::unique_ptr<ExpressionNode>> stack;
   stack.reserve(reverse_polish_notation.size());
   for (const auto& token: reverse_polish_notation) {
+    if (token.identifier == "pow") {
+      BuildOperation(token, stack);
+      continue;
+    }
     switch (token.type) {
       case VALUE: {
         stack.emplace_back(
@@ -49,16 +69,7 @@ void ExpressionTree::BuildTreeFromReversePolishNotation
         break;
       }
       case OPERATION: {
-        std::unique_ptr right_arg(std::move(stack.back()));
-        stack.pop_back();
-        std::unique_ptr left_arg(std::move(stack.back()));
-        stack.pop_back();
-        stack.emplace_back(
-          std::make_unique<ExpressionNode>(
-            NodesIdentifierSingleton::Instance().at(token.identifier),
-            0,
-            std::move(left_arg),
-            std::move(right_arg)));
+        BuildOperation(token, stack);
         break;
       }
       case UNARY_OPERATION: {

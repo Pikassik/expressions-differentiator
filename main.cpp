@@ -3,15 +3,14 @@
 #include <DifferentiateTree.h>
 
 /*
-// TODO: 1) fixed precision numbers
-// TODO: 2) derivatives
-// TODO: 3) optimizations
-// TODO: 4) LaTeX
-// TODO: 5) Funny samples
+ * TODO: 1) fixed precision numbers
+ * TODO: 2) optimizations
+ * TODO: 3) LaTeX
+ * TODO: 4) Funny samples
  */
 int main() {
   std::string expression;
-  expression = "x / (x + 5)";
+  expression = "sin(ln(1-pow(x, 3)))";
   ExpressionTree tree(expression);
   tree.root = DifferentiateTree(std::move(tree.root));
   tree.Dump("dump");
