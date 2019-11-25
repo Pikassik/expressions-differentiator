@@ -5,7 +5,9 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories("headers" ".")
 set(CMAKE_CXX_FLAGS "-Wall")
 
-execute_process(COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/instructions_handler.py ${CMAKE_CURRENT_SOURCE_DIR})
+execute_process(COMMAND python3
+                ${CMAKE_CURRENT_SOURCE_DIR}/derivatives_generator.py
+                ${CMAKE_CURRENT_SOURCE_DIR})
 
 add_executable(expressions_differentiator
                main.cpp
@@ -23,6 +25,6 @@ add_executable(expressions_differentiator
                headers/DotFileFromTreeGenerator.h
                sources/DotFileFromTreeGenerator.cpp
                sources/NodesIdentifierSingleton.cpp
-               headers/TreeDefines.h
+        headers/DerivativesDefines.h
                headers/DifferentiateTree.h
-               sources/DifferentiateTree.cpp)
+               sources/DifferentiateTree.cpp headers/DerivativesUndefs.h)

@@ -17,17 +17,19 @@ NodesIdentifierSingleton::InstanceReversed() {
 }
 
 void NodesIdentifierSingleton::Init() {
-  identifiers_["+"] = 2;
-  identifiers_["sin"] = 3;
-  identifiers_["x"] = 1;
-  identifiers_["*"] = 4;
+  #include <generated/FunctionsIdentifiers.h>
+//  identifiers_["+"] = 2;
+//  identifiers_["sin"] = 3;
+//  identifiers_["x"] = 1;
+//  identifiers_["*"] = 4;
 }
 
 void NodesIdentifierSingleton::InitReversed() {
-  inverse_identifiers_[2] = "+";
-  inverse_identifiers_[3] = "sin";
-  inverse_identifiers_[1] = "x";
-  inverse_identifiers_[4] = "*";
+  #include <generated/InverseFunctionsIdentifiers.h>
+//  inverse_identifiers_[2] = "+";
+//  inverse_identifiers_[3] = "sin";
+//  inverse_identifiers_[1] = "x";
+//  inverse_identifiers_[4] = "*";
 }
 
 const int NodesIdentifierSingleton::kNumberId = 0;

@@ -1,4 +1,5 @@
 #pragma once
 #include <ExpressionNode.hpp>
 
-void DifferentiateTree(std::unique_ptr<ExpressionNode> node);
+std::unique_ptr<ExpressionNode>
+DifferentiateTree(std::unique_ptr<ExpressionNode> node);

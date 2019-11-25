@@ -1,22 +1,23 @@
-VARIABLE x
+#include <DerivativesDefines.h>
+case 1:
 {
   CUR_TYPE = NUMBER_TYPE;
   CUR_VALUE = 1;
   RET;
 }
-OPERATION +
+case 2:
 {
   LEFT = DIF(LEFT);
   RIGHT = DIF(RIGHT);
   RET;
 }
-OPERATION -
+case 3:
 {
   LEFT = DIF(LEFT);
   RIGHT = DIF(RIGHT);
   RET;
 }
-OPERATION *
+case 4:
 {
   LET copy_left  = COPY(LEFT);
   LET copy_right = COPY(RIGHT);
@@ -25,7 +26,7 @@ OPERATION *
   CUR_TYPE = TYPE("+");
   RET;
 }
-OPERATION /
+case 5:
 {
   LET copy_left = COPY(LEFT);
   LET copy_right = COPY(RIGHT);
@@ -38,3 +39,4 @@ OPERATION /
   RIGHT = NEW(TYPE("*"), 0, denominator_multiplier1, denominator_multiplier2);
   RET;
 }
+#include <DerivativesUndefs.h>

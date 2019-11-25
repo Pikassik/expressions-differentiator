@@ -19,10 +19,10 @@ ExpressionNode::ExpressionNode(const ExpressionNode& other)
 : type_id(other.type_id)
 , value(other.value) {
   if (other.left) {
-    left  = std::make_unique<ExpressionNode>(*left);
+    left  = std::make_unique<ExpressionNode>(*(other.left));
   }
   if (other.right) {
-    right = std::make_unique<ExpressionNode>(*right);
+    right = std::make_unique<ExpressionNode>(*(other.right));
   }
 }
 
