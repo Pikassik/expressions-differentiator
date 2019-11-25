@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories("headers" ".")
 set(CMAKE_CXX_FLAGS "-Wall")
 
+execute_process(COMMAND python3 ${CMAKE_CURRENT_SOURCE_DIR}/instructions_handler.py ${CMAKE_CURRENT_SOURCE_DIR})
 
 add_executable(expressions_differentiator
                main.cpp
@@ -21,4 +22,7 @@ add_executable(expressions_differentiator
                sources/ExpressionTree.cpp
                headers/DotFileFromTreeGenerator.h
                sources/DotFileFromTreeGenerator.cpp
-               sources/NodesIdentifierSingleton.cpp)
+               sources/NodesIdentifierSingleton.cpp
+               headers/TreeDefines.h
+               headers/DifferentiateTree.h
+               sources/DifferentiateTree.cpp)

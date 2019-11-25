@@ -10,18 +10,24 @@ NodesIdentifierSingleton::Instance() {
 
 const std::unordered_map<int, std::string_view>&
 NodesIdentifierSingleton::InstanceReversed() {
-  if (inversed_identifiers_.empty()) {
+  if (inverse_identifiers_.empty()) {
     InitReversed();
   }
-  return inversed_identifiers_;
+  return inverse_identifiers_;
 }
 
 void NodesIdentifierSingleton::Init() {
   identifiers_["+"] = 2;
+  identifiers_["sin"] = 3;
+  identifiers_["x"] = 1;
+  identifiers_["*"] = 4;
 }
 
 void NodesIdentifierSingleton::InitReversed() {
-  inversed_identifiers_[2] = "+";
+  inverse_identifiers_[2] = "+";
+  inverse_identifiers_[3] = "sin";
+  inverse_identifiers_[1] = "x";
+  inverse_identifiers_[4] = "*";
 }
 
 const int NodesIdentifierSingleton::kNumberId = 0;
@@ -30,4 +36,4 @@ std::unordered_map<std::string_view, int>
 NodesIdentifierSingleton::identifiers_;
 
 std::unordered_map<int, std::string_view>
-NodesIdentifierSingleton::inversed_identifiers_;
+NodesIdentifierSingleton::inverse_identifiers_;

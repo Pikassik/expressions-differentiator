@@ -51,7 +51,8 @@ bool operator>=(const Token& lhvalue, const Token& rhvalue) {
 
 ReversePolishNotationGenerator::
 ReversePolishNotationGenerator(const std::vector<Token>& expression)
-: expression_(expression) {}
+: expression_(expression) {
+}
 
 std::vector<Token>
 ReversePolishNotationGenerator::GenerateExpression() {
@@ -141,5 +142,3 @@ void ReversePolishNotationGenerator::ProcessRightBracket() {
     operations_stack_.pop_back();
   }
 }
-
-

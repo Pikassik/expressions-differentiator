@@ -3,7 +3,7 @@
 
 int main() {
   std::string expression;
-  expression = "1 + 2 + 3";
+  expression = "sin(4 * x)";
   ExpressionTree tree(expression);
   tree.Dump("dump");
 }

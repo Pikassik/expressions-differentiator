@@ -1,6 +1,7 @@
 #include <Tokenizer.h>
 #include <cctype>
 #include <cstdlib>
+#include <cstdio>
 
 std::vector<Token>
 Tokenizer::GetTokens(const std::string_view& expression) {
@@ -82,7 +83,6 @@ Tokenizer::GetTokens(const std::string_view& expression) {
       tokens_.emplace_back(expression.substr(begin, end - begin), FUNCTION);
     }
   }
-
   return std::move(tokens_);
 }
 

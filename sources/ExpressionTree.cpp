@@ -7,8 +7,9 @@
 
 ExpressionTree::ExpressionTree(const std::string_view& expression) {
   Tokenizer tokenizer;
+  std::vector<Token> expression_tokens = tokenizer.GetTokens(expression);
   ReversePolishNotationGenerator
-    reverse_polish_notation_generator(tokenizer.GetTokens(expression));
+    reverse_polish_notation_generator(expression_tokens);
   std::vector<Token> reverse_polish_notation =
     reverse_polish_notation_generator.GenerateExpression();
   BuildTreeFromReversePolishNotation(reverse_polish_notation);

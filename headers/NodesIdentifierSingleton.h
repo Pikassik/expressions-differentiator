@@ -16,5 +16,5 @@ class NodesIdentifierSingleton {
   static void Init();
   static void InitReversed();
   static std::unordered_map<std::string_view, int> identifiers_;
-  static std::unordered_map<int, std::string_view> inversed_identifiers_;
+  static std::unordered_map<int, std::string_view> inverse_identifiers_;
 };

@@ -28,4 +28,5 @@ struct Token {
     Token(const std::string_view& identifier,
           TokenType type,
           int token_value = 0);
+    Token(const Token& other);
 };
